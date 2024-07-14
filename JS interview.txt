@@ -188,6 +188,103 @@ JavaScript - addEventListener
       alert('Button clicked!');
   });
 
+Sure! Here are the questions and answers about `async/await` and API handling in JavaScript in plain text format:
+
+```
+JavaScript - async/await and API
+
+- What is async/await in JavaScript?
+  async/await is syntactic sugar over promises, making asynchronous code look and behave more like synchronous code. The async keyword is used to define an asynchronous function, and the await keyword is used to wait for a promise to resolve.
+
+- How do you define an asynchronous function using async/await?
+  Use the async keyword before a function declaration or expression. Example:
+  async function fetchData() {
+      // function body
+  }
+
+- How do you use await to wait for a promise to resolve?
+  Use the await keyword before a promise inside an async function. Example:
+  async function fetchData() {
+      const response = await fetch('https://api.example.com/data');
+      const data = await response.json();
+      console.log(data);
+  }
+
+- What happens if a promise is rejected when using await?
+  If a promise is rejected, an error is thrown, which can be caught using a try/catch block. Example:
+  async function fetchData() {
+      try {
+          const response = await fetch('https://api.example.com/data');
+          const data = await response.json();
+          console.log(data);
+      } catch (error) {
+          console.error('Error fetching data:', error);
+      }
+  }
+
+- Can you use async/await with multiple promises?
+  Yes, you can use await with multiple promises sequentially or use Promise.all for parallel execution. Example:
+  async function fetchMultipleData() {
+      const [response1, response2] = await Promise.all([
+          fetch('https://api.example.com/data1'),
+          fetch('https://api.example.com/data2')
+      ]);
+      const data1 = await response1.json();
+      const data2 = await response2.json();
+      console.log(data1, data2);
+  }
+
+- How do you handle errors in async/await?
+  Use try/catch blocks to handle errors in async/await functions. Example:
+  async function fetchData() {
+      try {
+          const response = await fetch('https://api.example.com/data');
+          const data = await response.json();
+          console.log(data);
+      } catch (error) {
+          console.error('Error fetching data:', error);
+      }
+  }
+
+- What is the purpose of the fetch API in JavaScript?
+  The fetch API is used to make network requests, such as HTTP requests, from the browser. It returns a promise that resolves to the Response object representing the response to the request.
+
+- How do you make a GET request using the fetch API?
+  Use the fetch function, passing the URL as an argument. Example:
+  fetch('https://api.example.com/data')
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
+
+- How do you make a POST request using the fetch API?
+  Use the fetch function, passing the URL and an options object with the method set to 'POST' and the body containing the data to send. Example:
+  fetch('https://api.example.com/data', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ key: 'value' })
+  })
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
+
+- How do you handle response status codes using the fetch API?
+  Check the status property of the response object. Example:
+  fetch('https://api.example.com/data')
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Network response was not ok ' + response.statusText);
+          }
+          return response.json();
+      })
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
+```
+
+
+
+
 ```
 
 
